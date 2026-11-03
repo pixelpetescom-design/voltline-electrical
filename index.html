@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voltline Electrical | 24/7 Sydney Electricians</title>
+<meta name="description" content="Licensed Sydney electricians. Fixed upfront prices, $0 call-out, 24/7 emergency response and a lifetime labour warranty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* Tokens from DESIGN.md (Stripe-style reference). Inter Tight substitutes for sohne-var. */
+:root{
+  --color-indigo-ink:#533afd;--color-indigo-hover:#7389ff;--color-midnight-ink:#061b31;
+  --color-slate:#64748d;--color-steel:#50617a;--color-smoke:#839bc8;--color-pure-white:#fff;
+  --color-mist:#f8fafd;--color-frost:#e5edf5;--color-lavender-border:#b9b9f9;--color-lilac-border:#d6d9fc;
+  --color-periwinkle-wash:#e8e9ff;--color-deep-violet:#182659;--color-indigo-press:#3f27e0;
+  /* Section surfaces: tints of the DESIGN.md palette, no new hues */
+  --surface-cool:#eef3f9;--line-cool:#d3deea;
+  --on-dark:#ffffff;--on-dark-mute:#b8c4d6;--on-dark-line:rgba(255,255,255,.14);
+  --midnight-rgb:6,27,49;--color-error:#c0123c;
+  --font:'Inter Tight',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --text-caption:12px;--text-body-sm:14px;--text-body:16px;--text-body-lg:20px;--text-subheading:22px;
+  --text-heading-sm:26px;--text-heading:32px;--text-heading-lg:48px;--text-display:56px;
+  --s8:8px;--s16:16px;--s24:24px;--s32:32px;--s40:40px;--s48:48px;--s64:64px;--s80:80px;--s96:96px;
+  --page-max:1320px;--section-gap:var(--s96);--radius:4px;--radius-tag:9999px;
+}
+*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scrollbar-color:var(--color-lavender-border) var(--color-mist)}
+body{font-family:var(--font);font-weight:300;font-size:var(--text-body);line-height:1.45;letter-spacing:-0.01em;
+  color:var(--color-midnight-ink);background:var(--color-pure-white);font-feature-settings:"ss01" on,"tnum" on;
+  -webkit-font-smoothing:antialiased;caret-color:var(--color-indigo-ink)}
+::selection{background:var(--color-periwinkle-wash);color:var(--color-deep-violet)}
+:focus-visible{outline:2px solid var(--color-indigo-ink);outline-offset:3px;border-radius:var(--radius)}
+a{color:var(--color-indigo-ink);text-underline-offset:3px}
+svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:var(--page-max);margin:0 auto;padding:0 var(--s32)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--color-pure-white);padding:var(--s8) var(--s16)}
+.skip:focus{left:8px;z-index:20}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:var(--s8);min-height:48px;padding:14.5px 24px 15.5px;border-radius:var(--radius);
+  font:400 var(--text-body-sm)/1 var(--font);letter-spacing:-0.01em;text-decoration:none;cursor:pointer;
+  border:1px solid var(--color-indigo-ink);background:var(--color-indigo-ink);color:var(--color-pure-white);
+  transition:background-color .2s cubic-bezier(.16,1,.3,1),border-color .2s cubic-bezier(.16,1,.3,1)}
+/* DESIGN.md's #7389ff hover only gives ~3:1 with white 14px text; darken instead to keep AA. */
+.btn:hover{background:var(--color-indigo-press);border-color:var(--color-indigo-press)}
+.btn:active{background:var(--color-deep-violet);border-color:var(--color-deep-violet)}
+.btn.ghost{background:transparent;color:var(--color-indigo-ink);border-color:var(--color-lavender-border)}
+.btn.ghost:hover{background:var(--color-periwinkle-wash);border-color:var(--color-lavender-border)}
+.btn[disabled]{opacity:.55;cursor:progress}
+.pair{display:flex;flex-wrap:wrap;gap:var(--s8)}
+.textlink{font-weight:400;text-decoration:none;display:inline-flex;align-items:center;gap:4px;min-height:44px}
+
+/* Nav */
+header{position:sticky;top:0;z-index:10;background:var(--color-pure-white);border-bottom:1px solid var(--color-frost)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:var(--s24)}
+.mark{font-weight:400;font-size:var(--text-body-lg);letter-spacing:-0.02em;color:var(--color-midnight-ink);text-decoration:none;display:inline-flex;align-items:center;gap:var(--s8);white-space:nowrap}
+.mark svg{width:22px;height:22px;stroke:var(--color-indigo-ink);fill:none;stroke-width:1.5;stroke-linejoin:round}
+nav ul{display:flex;gap:var(--s32);list-style:none}
+nav ul a{font-weight:400;font-size:var(--text-body-sm);color:var(--color-midnight-ink);text-decoration:none}
+nav ul a:hover{color:var(--color-indigo-ink)}
+
+/* Section rhythm: 96px gaps. Adjacent sections always change surface, so tone divides them instead of rules. */
+section{padding:var(--section-gap) 0;scroll-margin-top:76px}
+.head{max-width:760px;margin-bottom:var(--s64)}
+h1,h2,h3{font-weight:300;text-wrap:balance}
+h2{font-size:var(--text-heading-lg);line-height:1.03;letter-spacing:-0.02em}
+.head p{margin-top:var(--s32);font-size:var(--text-subheading);line-height:1.4;color:var(--color-steel);max-width:62ch}
+
+/* Hero: photo on the right, navy shade under the type on the left */
+.hero{padding:var(--s96) 0 112px;background:
+  linear-gradient(90deg,var(--color-midnight-ink) 0%,var(--color-midnight-ink) 30%,rgba(var(--midnight-rgb),.72) 55%,rgba(var(--midnight-rgb),.18) 100%),
+  url(images/hero-electrician-night.jpg?v=2) right center/cover no-repeat var(--color-midnight-ink);
+  /* Pinned photo. A fixed background's "cover" would fill the whole window and zoom the photo in,
+     so size it as if covering the ~683px banner below the 77px header (photo is 2400x1018). */
+  background-attachment:scroll,fixed;
+  background-size:auto,max(100vw,1610px) auto;
+  background-position:0 0,right 0 top calc(418px - max(100vw,1610px) * .2121)}
+.hero h1{font-size:clamp(40px,6vw,var(--text-display));line-height:1.03;letter-spacing:-0.025em;max-width:14ch}
+.hero .lead{margin-top:var(--s32);font-size:var(--text-subheading);line-height:1.4;max-width:52ch}
+.hero .pair{margin-top:var(--s48)}
+.proof{margin-top:var(--s48);display:flex;flex-wrap:wrap;gap:var(--s16) var(--s40);font-size:var(--text-body-sm);color:var(--on-dark-mute);list-style:none}
+.proof li{display:flex;align-items:center;gap:var(--s8)}
+.proof svg{color:var(--color-indigo-hover)}
+.offer{margin-top:var(--s24);font-size:var(--text-body-sm);color:var(--on-dark-mute)}
+.offer strong{font-weight:400;color:var(--on-dark)}
+
+/* Documentary imagery: sharp corners, 1px frost border, no treatment */
+.photo img{display:block;width:100%;height:auto;border:1px solid var(--color-frost);background:var(--color-mist)}
+.photo figcaption{margin-top:var(--s8);font-size:var(--text-caption);color:var(--color-slate)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:var(--s64);align-items:center}
+.split .head{margin-bottom:var(--s32)}
+.facts{list-style:none;display:grid;gap:var(--s16)}
+.facts li{display:flex;gap:var(--s16)}
+.facts svg{margin-top:3px;color:var(--color-indigo-ink)}
+.work{display:grid;grid-template-columns:1fr 1fr;gap:var(--s24);margin-top:var(--s64)}
+
+/* Services ledger */
+.ledger{list-style:none;border-top:1px solid var(--color-frost)}
+.ledger li{display:grid;grid-template-columns:minmax(200px,1fr) 2fr minmax(140px,auto);gap:var(--s32);align-items:baseline;padding:var(--s24) 0;border-bottom:1px solid var(--color-frost)}
+.ledger h3{font-size:var(--text-subheading);line-height:1.1;letter-spacing:-0.01em}
+.ledger p{color:var(--color-steel);max-width:60ch}
+.ledger .price{text-align:right;font-size:var(--text-body-lg);letter-spacing:-0.01em;white-space:nowrap}
+.ledger .price small{display:block;font-size:var(--text-caption);color:var(--color-slate)}
+.note{margin-top:var(--s24);font-size:var(--text-body-sm);color:var(--color-slate)}
+
+/* Emergency triage: dark band over the switchboard close-up */
+.band-dark{background:
+  linear-gradient(90deg,var(--color-midnight-ink) 0%,rgba(var(--midnight-rgb),.92) 35%,rgba(var(--midnight-rgb),.72) 70%,rgba(var(--midnight-rgb),.45) 100%),
+  url(images/bg-switchboard-closeup.jpg) right center/cover no-repeat var(--color-midnight-ink);
+  /* Photo stays pinned to the viewport while the section scrolls over it */
+  background-attachment:scroll,fixed}
+.triage{display:grid;grid-template-columns:1fr 1fr;gap:var(--s64)}
+.triage h3{font-size:var(--text-heading-sm);line-height:1.12;margin-bottom:var(--s8)}
+.triage .sub{margin-bottom:var(--s24)}
+.triage ul{list-style:none;border-top:1px solid var(--on-dark-line);margin-bottom:var(--s32)}
+.triage li{display:flex;gap:var(--s16);padding:var(--s16) 0;border-bottom:1px solid var(--on-dark-line)}
+.triage li svg{margin-top:3px;color:var(--color-indigo-hover)}
+.triage .wait li svg{color:var(--on-dark-mute)}
+.safety{margin-top:var(--s48);padding:var(--s24) var(--s32);background:rgba(255,255,255,.06);border:1px solid var(--on-dark-line);border-radius:var(--radius);max-width:860px}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s32);list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding-top:var(--s24);border-top:1px solid var(--color-midnight-ink)}
+.steps li:before{content:counter(s,decimal-leading-zero);display:block;font-size:var(--text-body-sm);color:var(--color-indigo-ink);font-weight:400;margin-bottom:var(--s16)}
+.steps h3{font-size:var(--text-subheading);line-height:1.1;margin-bottom:var(--s8)}
+.steps p{color:var(--color-steel)}
+
+/* Reviews */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s48)}
+.quotes blockquote{font-size:var(--text-body-lg);line-height:1.4;letter-spacing:-0.01em}
+.quotes figcaption{margin-top:var(--s16);font-size:var(--text-body-sm);color:var(--color-slate)}
+.rating{display:flex;align-items:baseline;gap:var(--s16);margin-bottom:var(--s48)}
+.rating b{font-weight:300;font-size:var(--text-heading-lg);letter-spacing:-0.02em;line-height:1}
+.rating span{color:var(--color-slate)}
+
+/* Areas */
+.areas{display:flex;flex-wrap:wrap;gap:var(--s8);list-style:none}
+.areas li{padding:6px 14px;border-radius:var(--radius-tag);background:var(--color-periwinkle-wash);color:var(--color-deep-violet);font-size:var(--text-body-sm)}
+
+/* FAQ */
+.faq{max-width:860px}
+.faq details{border-bottom:1px solid var(--color-frost)}
+.faq details:first-child{border-top:1px solid var(--color-frost)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:var(--s24);padding:var(--s24) 0;font-size:var(--text-body-lg);letter-spacing:-0.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--color-indigo-ink)}
+.faq summary svg{color:var(--color-indigo-ink);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq details p{padding:0 0 var(--s24);color:var(--color-steel);max-width:65ch}
+
+/* Callback form */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:var(--s64);align-items:start}
+.contact .head{margin-bottom:0}
+.direct{margin-top:var(--s40)}
+.direct a.tel{font-size:var(--text-heading);letter-spacing:-0.02em;text-decoration:none;font-weight:300;color:var(--on-dark)}
+.direct a.tel:hover{text-decoration:underline;text-decoration-thickness:1px}
+.direct p{color:var(--on-dark-mute);font-size:var(--text-body-sm);margin-top:var(--s8)}
+form{display:grid;gap:var(--s16);background:var(--color-pure-white);color:var(--color-midnight-ink);padding:var(--s32);border-radius:var(--radius)}
+/* Scoped under .contact so these outrank the .on-dark rules of the surrounding band */
+.contact form :focus-visible{outline-color:var(--color-indigo-ink)}
+.contact form .btn.ghost{color:var(--color-indigo-ink);border-color:var(--color-lavender-border)}
+.contact form .btn.ghost:hover{background:var(--color-periwinkle-wash);border-color:var(--color-lavender-border)}
+.field{display:grid;gap:var(--s8)}
+label{font-weight:400;font-size:var(--text-body-sm)}
+label .opt{color:var(--color-slate);font-weight:300}
+input,select{width:100%;min-height:48px;padding:12px 14px;font:300 var(--text-body)/1.2 var(--font);color:var(--color-midnight-ink);
+  background:var(--color-pure-white);border:1px solid var(--color-frost);border-radius:var(--radius);transition:border-color .2s}
+input::placeholder{color:var(--color-slate)}
+input:hover,select:hover{border-color:var(--color-lilac-border)}
+input:focus,select:focus{outline:none;border-color:var(--color-indigo-ink);box-shadow:0 0 0 3px var(--color-periwinkle-wash)}
+input[aria-invalid=true]{border-color:var(--color-error)}
+.err{font-size:var(--text-caption);color:var(--color-error)}
+.err:empty{display:none}
+.status{font-size:var(--text-body-sm);color:var(--color-deep-violet)}
+.status:empty{display:none}
+.fine{font-size:var(--text-caption);color:var(--color-slate)}
+
+footer{background:var(--color-mist);padding:var(--s64) 0;font-size:var(--text-body-sm);color:var(--color-steel)}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--s48)}
+footer h3{font-size:var(--text-body-sm);font-weight:400;color:var(--color-midnight-ink);margin-bottom:var(--s16)}
+footer ul{list-style:none;display:grid;gap:var(--s8)}
+footer a{color:var(--color-steel);text-decoration:none}footer a:hover{color:var(--color-indigo-ink)}
+.legal{grid-column:1/-1;padding-top:var(--s32);border-top:1px solid var(--color-frost);font-size:var(--text-caption);color:var(--color-steel)}
+
+/* Dark surfaces: hero, emergency, call back */
+.on-dark{color:var(--on-dark)}
+.on-dark :focus-visible{outline-color:var(--on-dark)}
+.on-dark .head p,.on-dark .lead,.on-dark .sub{color:var(--on-dark-mute)}
+.on-dark .btn.ghost{color:var(--on-dark);border-color:rgba(255,255,255,.45)}
+.on-dark .btn.ghost:hover{background:rgba(255,255,255,.1);border-color:var(--on-dark)}
+.on-dark .textlink{color:var(--color-indigo-hover)}
+.on-dark .textlink:hover{color:var(--on-dark)}
+
+/* Light surfaces */
+.band-cool{background:var(--surface-cool)}
+.band-cool .ledger,.band-cool .ledger li{border-color:var(--line-cool)}
+.band-cool .ledger .price small,.band-cool .note,.band-cool figcaption{color:var(--color-steel)}
+.band-wash{background:var(--color-periwinkle-wash)}
+.band-mist{background:var(--color-mist)}
+.band-violet{background:var(--color-deep-violet)}
+
+.bar{display:none}
+
+@media (max-width:1024px){
+  /* Narrower screens push the lit switchboard under the intro copy, so hold the shade further right */
+  .hero{background:
+    linear-gradient(90deg,var(--color-midnight-ink) 0%,var(--color-midnight-ink) 45%,rgba(var(--midnight-rgb),.82) 72%,rgba(var(--midnight-rgb),.4) 100%),
+    url(images/hero-electrician-night.jpg?v=2) right center/cover no-repeat var(--color-midnight-ink);
+    background-attachment:scroll,fixed;
+    background-size:auto,max(100vw,1610px) auto;
+    background-position:0 0,right 0 top calc(418px - max(100vw,1610px) * .2121)}
+  .ledger li{grid-template-columns:1fr auto;row-gap:var(--s8)}
+  .ledger p{grid-column:1/-1;grid-row:2}
+  .steps{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .wrap{padding:0 var(--s16)}
+  nav ul{display:none}
+  /* The sticky bottom bar carries Call on mobile, so the header keeps just the mark. */
+  header .btn{display:none}
+  header .wrap{height:64px}
+  section{scroll-margin-top:64px}
+  :root{--section-gap:var(--s64)}
+  /* Phone: photo sits above the headline, then fades into solid navy behind the text */
+  .hero{padding:280px 0 var(--s64);background:
+    linear-gradient(180deg,rgba(var(--midnight-rgb),.1) 0px,rgba(var(--midnight-rgb),.35) 150px,var(--color-midnight-ink) 300px),
+    url(images/hero-electrician-night-sm.jpg?v=2) 72% 0/auto 320px no-repeat var(--color-midnight-ink)}
+  .band-dark{background:linear-gradient(180deg,rgba(var(--midnight-rgb),.88),var(--color-midnight-ink) 60%),url(images/bg-switchboard-closeup-sm.jpg) 70% 0/auto 420px no-repeat var(--color-midnight-ink)}
+  form{padding:var(--s24)}
+  h2{font-size:var(--text-heading);letter-spacing:-0.02em}
+  .head{margin-bottom:var(--s40)}
+  .head p,.hero .lead{font-size:var(--text-body-lg)}
+  .triage,.contact,.split,.work{grid-template-columns:1fr;gap:var(--s48)}
+  .work{gap:var(--s32);margin-top:var(--s48)}
+  .steps{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr 1fr}
+  footer .about{grid-column:1/-1}
+  .bar{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);position:fixed;left:0;right:0;bottom:0;z-index:10;padding:var(--s8) var(--s16) calc(var(--s8) + env(safe-area-inset-bottom));background:var(--color-pure-white);border-top:1px solid var(--color-frost)}
+  .bar .btn{justify-content:center}
+  body{padding-bottom:72px}
+}
+/* Reduced motion on wider screens: unpin the banner photo and go back to covering the banner itself */
+@media (prefers-reduced-motion:reduce) and (min-width:761px){.hero{background-attachment:scroll;background-size:auto,cover;background-position:0 0,right center}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.band-dark{background-attachment:scroll}*{transition-duration:0s!important}}
+</style>
+</head>
+<body>
+<!-- MOCK-UP: brand, phone, licence, ABN, prices, rating and reviews are placeholders. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="phone" viewBox="0 0 16 16"><path d="M5.2 1.8 3.4 2.3c-.7.2-1.1.9-1 1.6.6 4.6 4.2 8.2 8.8 8.8.7.1 1.4-.3 1.6-1l.5-1.8-2.6-1.3-1.3 1.3c-1.6-.7-2.9-2-3.6-3.6l1.3-1.3z"/></symbol>
+  <symbol id="check" viewBox="0 0 16 16"><path d="m3 8.5 3 3 7-7"/></symbol>
+  <symbol id="arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  <symbol id="bolt" viewBox="0 0 16 16"><path d="M9 1.5 3.5 9H8l-1 5.5L12.5 7H8z"/></symbol>
+  <symbol id="clock" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></symbol>
+  <symbol id="plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Voltline Electrical home"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M12.5 2 5 12.5h6L9.5 20 17 9.5h-6z"/></svg>Voltline Electrical</a>
+    <nav aria-label="Primary">
+      <ul><li><a href="#services">Services &amp; prices</a></li><li><a href="#emergency">Emergencies</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li></ul>
+    </nav>
+    <a class="btn" href="tel:1300000000"><svg class="i" aria-hidden="true"><use href="#phone"/></svg>1300 000 000</a>
+  </div>
+</header>
+
+<main id="main">
+<div class="hero on-dark" id="top">
+  <div class="wrap">
+    <h1>Power back on. Price agreed before we start.</h1>
+    <p class="lead">Licensed Sydney electricians, 24 hours a day. We find the fault for free, give you a fixed written price, and only start when you say yes.</p>
+    <div class="pair">
+      <a class="btn" href="tel:1300000000"><svg class="i" aria-hidden="true"><use href="#phone"/></svg>Call 1300 000 000</a>
+      <a class="btn ghost" href="#quote">Request a call back</a>
+    </div>
+    <p class="offer"><strong>New customers save $50</strong> on their first job. Call-out is always $0.</p>
+    <ul class="proof">
+      <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>NSW licensed &amp; insured</li>
+      <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Level 2 ASP accredited</li>
+      <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Lifetime labour warranty</li>
+      <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>4.9 from 312 Google reviews</li>
+    </ul>
+  </div>
+</div>
+
+<section aria-labelledby="who-h">
+  <div class="wrap split">
+    <figure class="photo"><img src="images/electrician-switchboard.jpg" width="1600" height="1195" alt="An electrician in safety glasses wiring circuit breakers into a new switchboard in a hallway" fetchpriority="high"></figure>
+    <div>
+      <div class="head">
+        <h2 id="who-h">One licensed electrician, start to finish.</h2>
+        <p>The person who quotes your job is the person who does it. We don't hand work to subcontractors, so the name on your compliance certificate belongs to whoever turned up.</p>
+      </div>
+      <ul class="facts">
+        <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Police-checked, NSW-licensed electricians</li>
+        <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Shoes off inside, drop sheets down, and we clean up before we go</li>
+        <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Certificate of Compliance emailed the same day</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="band-cool" aria-labelledby="services-h">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="services-h">What we fix, fit and upgrade</h2>
+      <p>Typical starting prices, so you know the ballpark before you call. Every job gets an exact fixed quote before work begins.</p>
+    </div>
+    <ul class="ledger">
+      <li><h3>Emergency call-out</h3><p>No power, sparking or a burning smell. We answer 24/7 and make it safe first.</p><div class="price">$0<small>diagnosis &amp; quote</small></div></li>
+      <li><h3>Switchboard upgrade</h3><p>Old fuses or ceramic boards replaced with a compliant board and safety switches on every circuit.</p><div class="price">from $1,450</div></li>
+      <li><h3>Safety switches (RCD)</h3><p>Tripping, faulty or missing switches tested, repaired or installed to current Australian Standards.</p><div class="price">from $240<small>per circuit</small></div></li>
+      <li><h3>Power points &amp; USB</h3><p>Extra outlets, outdoor points, USB sockets and TV or data points, neatly finished.</p><div class="price">from $140<small>each</small></div></li>
+      <li><h3>Lighting &amp; downlights</h3><p>LED downlights, pendants, dimmers, garden and security lighting.</p><div class="price">from $95<small>per light</small></div></li>
+      <li><h3>EV charger install</h3><p>Home chargers installed and certified, with the network paperwork handled for you.</p><div class="price">from $1,390</div></li>
+      <li><h3>Smoke alarms</h3><p>Interconnected alarms that meet NSW rules for owners, landlords and agents.</p><div class="price">from $120<small>per alarm</small></div></li>
+      <li><h3>Level 2 / ASP work</h3><p>Consumer mains, meter panels, point of attachment, disconnections and reconnections.</p><div class="price">Quoted<small>site visit</small></div></li>
+      <li><h3>Commercial &amp; strata</h3><p>Fit-outs, maintenance, test and tag, and after-hours repairs that keep you trading.</p><div class="price">Quoted<small>site visit</small></div></li>
+    </ul>
+    <p class="note">Prices include GST and are a guide for a standard single-storey home. <a href="#quote">Ask about your job</a>.</p>
+    <div class="work">
+      <figure class="photo"><img src="images/ev-charger-carport.jpg" width="1600" height="893" loading="lazy" alt="A wall-mounted EV charger on a rendered carport wall, cable coiled, charging a car"><figcaption>EV charger and dedicated circuit, Lane Cove</figcaption></figure>
+      <figure class="photo"><img src="images/kitchen-pendants.jpg" width="1600" height="893" loading="lazy" alt="A renovated kitchen at dusk with three glass pendant lights over a stone island and LED downlights"><figcaption>Pendants and dimmable downlights, Haberfield</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="emergency" class="band-dark on-dark" aria-labelledby="emergency-h">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="emergency-h">Is it an emergency?</h2>
+      <p>A quick check before you call. Either way, the call-out is free.</p>
+    </div>
+    <div class="triage">
+      <div>
+        <h3>Call now and we'll come tonight.</h3>
+        <p class="sub">Someone answers within minutes, any hour.</p>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#bolt"/></svg>Burning smell or smoke from a switchboard, outlet or appliance</li>
+          <li><svg class="i" aria-hidden="true"><use href="#bolt"/></svg>Sparking, buzzing or arcing</li>
+          <li><svg class="i" aria-hidden="true"><use href="#bolt"/></svg>No power at all while your neighbours still have it</li>
+          <li><svg class="i" aria-hidden="true"><use href="#bolt"/></svg>Water near switches, outlets or the switchboard</li>
+        </ul>
+        <div class="pair"><a class="btn" href="tel:1300000000"><svg class="i" aria-hidden="true"><use href="#phone"/></svg>Call 1300 000 000</a><a class="btn ghost" href="#quote">Request a call back</a></div>
+      </div>
+      <div class="wait">
+        <h3>It can wait for a booking.</h3>
+        <p class="sub">Pick a time that suits you, usually within 48 hours.</p>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#clock"/></svg>A safety switch that trips now and then</li>
+          <li><svg class="i" aria-hidden="true"><use href="#clock"/></svg>One dead power point or a flickering light</li>
+          <li><svg class="i" aria-hidden="true"><use href="#clock"/></svg>Planning a renovation, EV charger or extra outlets</li>
+          <li><svg class="i" aria-hidden="true"><use href="#clock"/></svg>A safety check before selling or renting</li>
+        </ul>
+        <a class="textlink" href="#quote">Book a time <svg class="i" aria-hidden="true"><use href="#arrow"/></svg></a>
+      </div>
+    </div>
+    <p class="safety">If a power line is down, stay at least 8 metres away and call 000, then your network: Ausgrid 13 13 88 or Endeavour Energy 13 10 03. If it's safe, switch off at the mains before we get there.</p>
+  </div>
+</section>
+
+<section class="band-wash" aria-labelledby="process-h">
+  <div class="wrap">
+    <div class="head"><h2 id="process-h">How a job runs</h2></div>
+    <ol class="steps">
+      <li><h3>You call or book</h3><p>We reply within 15 minutes, day or night.</p></li>
+      <li><h3>We diagnose for free</h3><p>No call-out fee. We find the fault and explain it in plain English.</p></li>
+      <li><h3>You approve a fixed price</h3><p>You get a written quote before we touch anything. It's your call, and we won't push.</p></li>
+      <li><h3>We fix it and tidy up</h3><p>You get a compliance certificate and a lifetime warranty on our labour, and we leave the place clean.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="reviews" aria-labelledby="reviews-h">
+  <div class="wrap">
+    <div class="head"><h2 id="reviews-h">What Sydney customers say</h2></div>
+    <div class="rating"><b>4.9</b><span>average from 312 Google reviews</span></div>
+    <div class="quotes">
+      <figure><blockquote>“Switchboard swapped in one morning. He explained every step and the price matched the quote to the dollar.”</blockquote><figcaption>Sample customer, Marrickville</figcaption></figure>
+      <figure><blockquote>“Called at 11pm with no power. Someone was at the door within the hour and the lights were back by midnight.”</blockquote><figcaption>Sample customer, Parramatta</figcaption></figure>
+      <figure><blockquote>“Our agency uses them for every rental. Quotes come back fast, the work's tidy, and the compliance paperwork always turns up.”</blockquote><figcaption>Sample property manager, Chatswood</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band-mist" aria-labelledby="areas-h">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="areas-h">Where we work</h2>
+      <p>Greater Sydney, with vans based in the Inner West, North Shore and Western Sydney.</p>
+    </div>
+    <ul class="areas"><li>Sydney CBD</li><li>Inner West</li><li>Eastern Suburbs</li><li>North Shore</li><li>Northern Beaches</li><li>Parramatta</li><li>Hills District</li><li>St George</li><li>Sutherland Shire</li><li>Penrith &amp; Blue Mountains</li></ul>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="head"><h2 id="faq-h">Questions people ask</h2></div>
+    <div class="faq">
+      <details><summary>Are your electricians licensed?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Yes. Every electrician holds a current NSW licence and we carry full public liability insurance. Our licence number is on every quote and certificate.</p></details>
+      <details><summary>Do you charge by the hour?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>No. You get a fixed price for the job before we start. If we find something extra, we stop and ask first.</p></details>
+      <details><summary>Is the call-out really free?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Yes. Diagnosis and the quote are free. You only pay if you approve the work.</p></details>
+      <details><summary>What warranty do you give?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>A lifetime warranty on our labour. Parts carry the manufacturer's warranty.</p></details>
+      <details><summary>Do you work weekends and public holidays?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Yes, 24 hours a day, 7 days a week, with the same fixed-price approach.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="quote" class="band-violet on-dark" aria-labelledby="quote-h">
+  <div class="wrap contact">
+    <div>
+      <div class="head">
+        <h2 id="quote-h">Request a call back</h2>
+        <p>Tell us what's going on and a licensed electrician will ring you back within 15 minutes.</p>
+      </div>
+      <div class="direct">
+        <a class="tel" href="tel:1300000000">1300 000 000</a>
+        <p>Calling is faster for emergencies. We answer 24/7.</p>
+      </div>
+    </div>
+    <form id="callback" novalidate>
+      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name"><span class="err" id="e-name"></span></div>
+      <div class="field"><label for="f-phone">Mobile number</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-describedby="e-phone"><span class="err" id="e-phone"></span></div>
+      <div class="field"><label for="f-suburb">Suburb <span class="opt">(optional)</span></label><input id="f-suburb" name="suburb" autocomplete="address-level2"></div>
+      <div class="field"><label for="f-job">What do you need?</label>
+        <select id="f-job" name="job"><option>Not sure yet</option><option>Emergency or no power</option><option>Switchboard</option><option>Safety switches</option><option>Lights or power points</option><option>EV charger</option><option>Smoke alarms</option><option>Level 2 / ASP work</option><option>Commercial or strata</option></select></div>
+      <div class="pair"><button class="btn" type="submit">Request my call back</button><a class="btn ghost" href="tel:1300000000">Or call now</a></div>
+      <p class="status" role="status" aria-live="polite"></p>
+      <p class="fine">Mock-up form. Nothing is sent yet.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="about"><h3>Voltline Electrical</h3><p>Licensed electricians for Sydney homes, rentals and businesses, on call 24/7 with fixed prices and a free call-out.</p></div>
+    <div><h3>Services</h3><ul><li><a href="#services">Switchboards</a></li><li><a href="#services">Safety switches</a></li><li><a href="#services">EV chargers</a></li><li><a href="#emergency">Emergencies</a></li></ul></div>
+    <div><h3>Contact</h3><ul><li><a href="tel:1300000000">1300 000 000</a></li><li><a href="#quote">Request a call back</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+    <p class="legal">© 2026 Voltline Electrical (mock-up). NSW Electrical Licence 000000C · ABN 00 000 000 000. Placeholder brand, numbers, prices and reviews.</p>
+  </div>
+</footer>
+
+<div class="bar"><a class="btn" href="tel:1300000000"><svg class="i" aria-hidden="true"><use href="#phone"/></svg>Call now</a><a class="btn ghost" href="#quote">Call back</a></div>
+
+<script>
+const f=document.getElementById('callback'),status=f.querySelector('.status');
+const rules={name:v=>v.trim()?'':'Enter your name so we know who to ask for.',phone:v=>/^[0-9 +()]{8,}$/.test(v.trim())?'':'Enter a mobile number with at least 8 digits, like 0412 345 678.'};
+function check(input){const msg=rules[input.name](input.value);input.setAttribute('aria-invalid',!!msg);document.getElementById('e-'+input.name).textContent=msg;return !msg}
+f.querySelectorAll('#f-name,#f-phone').forEach(i=>{
+  i.addEventListener('blur',()=>check(i));
+  // Once a field has been flagged, clear the error as soon as the input becomes valid.
+  i.addEventListener('input',()=>{if(i.getAttribute('aria-invalid')==='true')check(i)});
+});
+f.addEventListener('submit',e=>{e.preventDefault();
+  const ok=[f.name,f.phone].map(check).every(Boolean);
+  if(!ok){f.querySelector('[aria-invalid=true]').focus();return}
+  const b=f.querySelector('button');b.disabled=true;b.textContent='Sending…';
+  setTimeout(()=>{b.disabled=false;b.textContent='Request my call back';status.textContent='Thanks '+f.name.value.trim()+'. We\'ll ring '+f.phone.value.trim()+' within 15 minutes.';f.reset()},700);
+});
+</script>
+</body>
+</html>
