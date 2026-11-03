@@ -5,10 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Voltline Electrical | 24/7 Sydney Electricians</title>
 <meta name="description" content="Licensed Sydney electricians. Fixed upfront prices, $0 call-out, 24/7 emergency response and a lifetime labour warranty.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400&display=swap" rel="stylesheet">
+<!-- Start the font and the banner photo downloading before the CSS is parsed -->
+<link rel="preload" href="fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="images/hero-electrician-night.webp" as="image" type="image/webp" media="(min-width:761px)" fetchpriority="high">
+<link rel="preload" href="images/hero-electrician-night-sm.webp" as="image" type="image/webp" media="(max-width:760px)" fetchpriority="high">
 <style>
+/* Inter Tight (SIL OFL 1.1, see fonts/OFL.txt), self-hosted latin subset; one variable file covers 300 and 400 */
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:300 400;font-display:swap;
+  src:url(fonts/inter-tight-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* Tokens from DESIGN.md (Stripe-style reference). Inter Tight substitutes for sohne-var. */
 :root{
   --color-indigo-ink:#533afd;--color-indigo-hover:#7389ff;--color-midnight-ink:#061b31;
@@ -19,12 +24,20 @@
   --surface-cool:#eef3f9;--line-cool:#d3deea;
   --on-dark:#ffffff;--on-dark-mute:#b8c4d6;--on-dark-line:rgba(255,255,255,.14);
   --midnight-rgb:6,27,49;--color-error:#c0123c;
+  /* Background photos: JPEG here, swapped for WebP below where image-set() with type() is supported */
+  --img-hero:url(images/hero-electrician-night.jpg);--img-hero-sm:url(images/hero-electrician-night-sm.jpg);
+  --img-board:url(images/bg-switchboard-closeup.jpg);--img-board-sm:url(images/bg-switchboard-closeup-sm.jpg);
   --font:'Inter Tight',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --text-caption:12px;--text-body-sm:14px;--text-body:16px;--text-body-lg:20px;--text-subheading:22px;
   --text-heading-sm:26px;--text-heading:32px;--text-heading-lg:48px;--text-display:56px;
   --s8:8px;--s16:16px;--s24:24px;--s32:32px;--s40:40px;--s48:48px;--s64:64px;--s80:80px;--s96:96px;
   --page-max:1320px;--section-gap:var(--s96);--radius:4px;--radius-tag:9999px;
 }
+@supports (background-image:image-set(url("x.webp") type("image/webp"))){:root{
+  --img-hero:image-set(url(images/hero-electrician-night.webp) type("image/webp"),url(images/hero-electrician-night.jpg) type("image/jpeg"));
+  --img-hero-sm:image-set(url(images/hero-electrician-night-sm.webp) type("image/webp"),url(images/hero-electrician-night-sm.jpg) type("image/jpeg"));
+  --img-board:image-set(url(images/bg-switchboard-closeup.webp) type("image/webp"),url(images/bg-switchboard-closeup.jpg) type("image/jpeg"));
+  --img-board-sm:image-set(url(images/bg-switchboard-closeup-sm.webp) type("image/webp"),url(images/bg-switchboard-closeup-sm.jpg) type("image/jpeg"))}}
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scrollbar-color:var(--color-lavender-border) var(--color-mist)}
 body{font-family:var(--font);font-weight:300;font-size:var(--text-body);line-height:1.45;letter-spacing:-0.01em;
@@ -71,7 +84,7 @@ h2{font-size:var(--text-heading-lg);line-height:1.03;letter-spacing:-0.02em}
 /* Hero: photo on the right, navy shade under the type on the left */
 .hero{padding:var(--s96) 0 112px;background:
   linear-gradient(90deg,var(--color-midnight-ink) 0%,var(--color-midnight-ink) 30%,rgba(var(--midnight-rgb),.72) 55%,rgba(var(--midnight-rgb),.18) 100%),
-  url(images/hero-electrician-night.jpg?v=2) right center/cover no-repeat var(--color-midnight-ink);
+  var(--img-hero) right center/cover no-repeat var(--color-midnight-ink);
   /* Pinned photo. A fixed background's "cover" would fill the whole window and zoom the photo in,
      so size it as if covering the ~683px banner below the 77px header (photo is 2400x1018). */
   background-attachment:scroll,fixed;
@@ -108,7 +121,7 @@ h2{font-size:var(--text-heading-lg);line-height:1.03;letter-spacing:-0.02em}
 /* Emergency triage: dark band over the switchboard close-up */
 .band-dark{background:
   linear-gradient(90deg,var(--color-midnight-ink) 0%,rgba(var(--midnight-rgb),.92) 35%,rgba(var(--midnight-rgb),.72) 70%,rgba(var(--midnight-rgb),.45) 100%),
-  url(images/bg-switchboard-closeup.jpg) right center/cover no-repeat var(--color-midnight-ink);
+  var(--img-board) right center/cover no-repeat var(--color-midnight-ink);
   /* Photo stays pinned to the viewport while the section scrolls over it */
   background-attachment:scroll,fixed}
 .triage{display:grid;grid-template-columns:1fr 1fr;gap:var(--s64)}
@@ -207,7 +220,7 @@ footer a{color:var(--color-steel);text-decoration:none}footer a:hover{color:var(
   /* Narrower screens push the lit switchboard under the intro copy, so hold the shade further right */
   .hero{background:
     linear-gradient(90deg,var(--color-midnight-ink) 0%,var(--color-midnight-ink) 45%,rgba(var(--midnight-rgb),.82) 72%,rgba(var(--midnight-rgb),.4) 100%),
-    url(images/hero-electrician-night.jpg?v=2) right center/cover no-repeat var(--color-midnight-ink);
+    var(--img-hero) right center/cover no-repeat var(--color-midnight-ink);
     background-attachment:scroll,fixed;
     background-size:auto,max(100vw,1610px) auto;
     background-position:0 0,right 0 top calc(418px - max(100vw,1610px) * .2121)}
@@ -227,8 +240,8 @@ footer a{color:var(--color-steel);text-decoration:none}footer a:hover{color:var(
   /* Phone: photo sits above the headline, then fades into solid navy behind the text */
   .hero{padding:280px 0 var(--s64);background:
     linear-gradient(180deg,rgba(var(--midnight-rgb),.1) 0px,rgba(var(--midnight-rgb),.35) 150px,var(--color-midnight-ink) 300px),
-    url(images/hero-electrician-night-sm.jpg?v=2) 72% 0/auto 320px no-repeat var(--color-midnight-ink)}
-  .band-dark{background:linear-gradient(180deg,rgba(var(--midnight-rgb),.88),var(--color-midnight-ink) 60%),url(images/bg-switchboard-closeup-sm.jpg) 70% 0/auto 420px no-repeat var(--color-midnight-ink)}
+    var(--img-hero-sm) 72% 0/auto 320px no-repeat var(--color-midnight-ink)}
+  .band-dark{background:linear-gradient(180deg,rgba(var(--midnight-rgb),.88),var(--color-midnight-ink) 60%),var(--img-board-sm) 70% 0/auto 420px no-repeat var(--color-midnight-ink)}
   form{padding:var(--s24)}
   h2{font-size:var(--text-heading);letter-spacing:-0.02em}
   .head{margin-bottom:var(--s40)}
@@ -290,7 +303,10 @@ footer a{color:var(--color-steel);text-decoration:none}footer a:hover{color:var(
 
 <section aria-labelledby="who-h">
   <div class="wrap split">
-    <figure class="photo"><img src="images/electrician-switchboard.jpg" width="1600" height="1195" alt="An electrician in safety glasses wiring circuit breakers into a new switchboard in a hallway" fetchpriority="high"></figure>
+    <figure class="photo"><picture>
+      <source type="image/webp" srcset="images/electrician-switchboard-480.webp 480w, images/electrician-switchboard-800.webp 800w, images/electrician-switchboard-1200.webp 1200w, images/electrician-switchboard-1600.webp 1600w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1384px) calc(50vw - 64px), 596px">
+      <img src="images/electrician-switchboard.jpg" srcset="images/electrician-switchboard-800.jpg 800w, images/electrician-switchboard.jpg 1600w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1384px) calc(50vw - 64px), 596px" width="1600" height="1195" decoding="async" alt="An electrician in safety glasses wiring circuit breakers into a new switchboard in a hallway">
+    </picture></figure>
     <div>
       <div class="head">
         <h2 id="who-h">One licensed electrician, start to finish.</h2>
@@ -324,8 +340,14 @@ footer a{color:var(--color-steel);text-decoration:none}footer a:hover{color:var(
     </ul>
     <p class="note">Prices include GST and are a guide for a standard single-storey home. <a href="#quote">Ask about your job</a>.</p>
     <div class="work">
-      <figure class="photo"><img src="images/ev-charger-carport.jpg" width="1600" height="893" loading="lazy" alt="A wall-mounted EV charger on a rendered carport wall, cable coiled, charging a car"><figcaption>EV charger and dedicated circuit, Lane Cove</figcaption></figure>
-      <figure class="photo"><img src="images/kitchen-pendants.jpg" width="1600" height="893" loading="lazy" alt="A renovated kitchen at dusk with three glass pendant lights over a stone island and LED downlights"><figcaption>Pendants and dimmable downlights, Haberfield</figcaption></figure>
+      <figure class="photo"><picture>
+        <source type="image/webp" srcset="images/ev-charger-carport-480.webp 480w, images/ev-charger-carport-800.webp 800w, images/ev-charger-carport-1200.webp 1200w, images/ev-charger-carport-1600.webp 1600w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1384px) calc(50vw - 44px), 648px">
+        <img src="images/ev-charger-carport.jpg" srcset="images/ev-charger-carport-800.jpg 800w, images/ev-charger-carport.jpg 1600w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1384px) calc(50vw - 44px), 648px" width="1600" height="893" loading="lazy" decoding="async" alt="A wall-mounted EV charger on a rendered carport wall, cable coiled, charging a car">
+      </picture><figcaption>EV charger and dedicated circuit, Lane Cove</figcaption></figure>
+      <figure class="photo"><picture>
+        <source type="image/webp" srcset="images/kitchen-pendants-480.webp 480w, images/kitchen-pendants-800.webp 800w, images/kitchen-pendants-1200.webp 1200w, images/kitchen-pendants-1600.webp 1600w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1384px) calc(50vw - 44px), 648px">
+        <img src="images/kitchen-pendants.jpg" srcset="images/kitchen-pendants-800.jpg 800w, images/kitchen-pendants.jpg 1600w" sizes="(max-width:760px) calc(100vw - 32px), (max-width:1384px) calc(50vw - 44px), 648px" width="1600" height="893" loading="lazy" decoding="async" alt="A renovated kitchen at dusk with three glass pendant lights over a stone island and LED downlights">
+      </picture><figcaption>Pendants and dimmable downlights, Haberfield</figcaption></figure>
     </div>
   </div>
 </section>
